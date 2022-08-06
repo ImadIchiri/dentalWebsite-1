@@ -26,6 +26,12 @@ const toggleMenu = document.querySelector("#toggle-menue");
 const toggleMenuList = document.querySelectorAll("#toggle-menue i");
 const navItems = document.querySelectorAll(".list li");
 
+const toggleActive = () => {
+  toggleMenuList.forEach((icon) => {
+    icon.classList.toggle("active");
+  });
+};
+
 const openMenu = () => {
   mainNav.classList.add("active");
   toggleMenu.dataset.state = "opened";
@@ -37,9 +43,7 @@ const closeMenu = () => {
 };
 
 toggleMenu.addEventListener("click", () => {
-  toggleMenuList.forEach((icon) => {
-    icon.classList.toggle("active");
-  });
+  toggleActive();
 
   if (toggleMenu.dataset.state === "closed") {
     openMenu();
@@ -54,6 +58,7 @@ toggleMenu.addEventListener("click", () => {
 navItems.forEach((item) => {
   item.addEventListener("click", () => {
     closeMenu();
+    toggleActive();
   });
 });
 /*-------------------------------------*\
